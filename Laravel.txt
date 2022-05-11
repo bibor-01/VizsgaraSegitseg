@@ -1,0 +1,11 @@
+Model létrehozási parancs:
+php artisan make:model modelNev-mf
+
+Controller létrehozásai parancs:
+sima: php artisan make:controller controllerNeve
+API: php artisan make:controller API/controllerNeve
+
+Route:
+api.php-ba sablon:
+Route::apiResource('eleresiutnev', controllerNeve::class);
+

@@ -1,0 +1,31 @@
+kiiras:
+ try {
+            FileOutputStream fileOut = new FileOutputStream("galeria.bin");
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(galeria);
+            out.close();
+            fileOut.close();
+            System.out.printf("sikeres kiírás!");
+        } catch (IOException i) {
+            i.printStackTrace();
+        }
+       
+
+visszaolvasás:
+ galeria = null;
+ try {
+            ObjectInputStream objBe = new ObjectInputStream(new FileInputStream("galeria.bin"));
+            galeria = (Galeria)objBe.readObject();
+            objBe.close();          
+            System.out.println("Visszaállítás:");
+            for (KiallitasiTargy targy : galeria) {
+                System.out.println(targy);
+            }           
+        } catch (IOException i) {
+            i.printStackTrace();
+            return;
+        } catch (ClassNotFoundException c) {
+            System.out.println("Sikertelen beolvasás!");
+            c.printStackTrace();
+            return;
+        }
